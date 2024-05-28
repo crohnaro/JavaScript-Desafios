@@ -63,4 +63,4 @@ git push origin main
 
 ### Suporte
 Se você tiver alguma duvida, boa sorte pesquisando por ela, rs.
-Brincadeira, na proxima aula presencial eu tiro as duvida.
+Brincadeira, na proxima aula presencial eu tiro as duvidas.
