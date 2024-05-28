@@ -1,0 +1,1 @@
+/*Gerador de Senhas Aleatórias: Crie um programa que gere senhas aleatórias seguras com base nos critérios definidos pelo usuário (comprimento da senha, inclusão de letras maiúsculas, minúsculas, números e símbolos).*/
