@@ -1,4 +1,4 @@
-name: Run Tests
+name: CI Workflow
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  test:
+  run-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,3 +23,24 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+  store-submission:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    needs: run-tests
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Move submission to student directory
+        run: |
+          STUDENT=$(echo ${{ github.event.pull_request.user.login }})
+          mkdir -p submissions/$STUDENT
+          # Assuming the submission files are in a directory named `submission`
+          mv submission/* submissions/$STUDENT/
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add submissions/$STUDENT
+          git commit -m "Store submission from $STUDENT"
+          git push origin main
