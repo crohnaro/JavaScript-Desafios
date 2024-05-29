@@ -1,4 +1,4 @@
-# Projeto de Lógica de Programação
+# Desafios de Lógica de Programação
 
 Seja muito a bem vindo a momentos de talvez dor e sofrimento ( ou não, rs ) Este repositório contém exercícios de programação que devem ser resolvidos ( PREFERENCIALMENTE CASO VOCÊ QUEIRA SER APROVADO ) utilizando JavaScript. Siga as instruções abaixo para configurar o projeto localmente, desenvolver suas soluções e enviar suas respostas via pull request.
 
