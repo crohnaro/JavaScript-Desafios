@@ -44,3 +44,23 @@ jobs:
           git add submissions/$STUDENT
           git commit -m "Store submission from $STUDENT"
           git push origin main
+
+  update-readme:
+    needs: run-tests
+    if: ${{ needs.run-tests.result == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Identify challenge name
+        id: extract_challenge_name
+        run: |
+          CHALLENGE_NAME=$(echo ${{ github.event.pull_request.head.ref }} | sed 's/.*\///')
+          echo "Challenge name is $CHALLENGE_NAME"
+      - name: Add badge to README
+        run: |
+          echo "![Challenge Completed](https://img.shields.io/badge/Challenge%20Completed-$CHALLENGE_NAME-brightgreen)" >> README.md
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git commit -am "Add challenge completion badge"
+          git push origin main
