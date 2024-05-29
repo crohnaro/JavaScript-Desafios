@@ -1,7 +1,7 @@
-/* Função que soma 2 numeros */
+/* Função que soma */
 
 function soma(a, b) {
-
+  
 }
 
 module.exports = soma;
