@@ -2,39 +2,48 @@
 
 class Hangman {
   constructor(word, maxAttempts) {
-    this.word = word.toLowerCase();
+    this.word = word;
     this.maxAttempts = maxAttempts;
-    this.attemptsLeft = maxAttempts;
-    this.guessedLetters = new Set();
+    this.attempts = 0;
+    this.guessedLetters = [];
+    this.wordProgress = '_'.repeat(word.length);
   }
-
-  guess(letter) {
-    letter = letter.toLowerCase();
-    if (!this.isGameOver() && !this.guessedLetters.has(letter)) {
-      this.guessedLetters.add(letter);
-      if (!this.word.includes(letter)) {
-        this.attemptsLeft--; 
-      }
-    }
-  }
-
+ 
   getWordProgress() {
-    return this.word.split('').map(letter => {
-      if(this.guessedLetters.has(letter)) {
-        return letter;
-      } else {
-        return '_';
+    return this.wordProgress;
+  }
+ 
+  guess(letter) {
+    if (this.isGameOver()) {
+      return 'Game Over';
+    }
+   
+    if (this.guessedLetters.includes(letter)) {
+      return this.wordProgress;
+    }
+   
+    this.guessedLetters.push(letter);
+ 
+    if (this.word.includes(letter)) {
+      let newProgress = '';
+      for (let i = 0; i < this.word.length; i++) {
+        if (this.word[i] === letter) {
+          newProgress += letter;
+        } else {
+          newProgress += this.wordProgress[i];
+        }
       }
-    }).join('');
+      this.wordProgress = newProgress;
+    } else {
+      this.attempts++;
+    }
+   
+    return this.wordProgress;
   }
-
+ 
   isGameOver() {
-   return this.wordGuessed() || this.attemptsLeft === 0;
-  }
-
-  wordGuessed() {
-    return this.word.split('').every(letter => this.guessedLetters.has(letter));
+    return this.attempts >= this.maxAttempts;
   }
 }
-
+ 
 module.exports = Hangman;
