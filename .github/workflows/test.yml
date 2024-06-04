@@ -2,8 +2,6 @@ name: CI Workflow
 
 on:
   pull_request:
-    branches:
-      - main
 
 jobs:
   run-tests:

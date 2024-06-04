@@ -2,47 +2,19 @@
 
 class Hangman {
   constructor(word, maxAttempts) {
-    this.word = word;
-    this.maxAttempts = maxAttempts;
-    this.attempts = 0;
-    this.guessedLetters = [];
-    this.wordProgress = '_'.repeat(word.length);
+    
   }
  
   getWordProgress() {
-    return this.wordProgress;
+   
   }
  
   guess(letter) {
-    if (this.isGameOver()) {
-      return 'Game Over';
-    }
-   
-    if (this.guessedLetters.includes(letter)) {
-      return this.wordProgress;
-    }
-   
-    this.guessedLetters.push(letter);
- 
-    if (this.word.includes(letter)) {
-      let newProgress = '';
-      for (let i = 0; i < this.word.length; i++) {
-        if (this.word[i] === letter) {
-          newProgress += letter;
-        } else {
-          newProgress += this.wordProgress[i];
-        }
-      }
-      this.wordProgress = newProgress;
-    } else {
-      this.attempts++;
-    }
-   
-    return this.wordProgress;
+  
   }
  
   isGameOver() {
-    return this.attempts >= this.maxAttempts;
+   
   }
 }
  
