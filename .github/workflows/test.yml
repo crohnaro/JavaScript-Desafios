@@ -24,33 +24,4 @@ jobs:
       - name: Run tests
         run: npm test
 
-  create-submission-branch:
-    if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
-    needs: run-tests
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Create submission branch
-        run: |
-          STUDENT=$(echo ${{ github.event.pull_request.user.login }})
-          BRANCH_NAME="submission-${STUDENT}"
-          git checkout -b $BRANCH_NAME
-
-      - name: Move submission to student directory
-        run: |
-          STUDENT=$(echo ${{ github.event.pull_request.user.login }})
-          mkdir -p submissions/$STUDENT
-          mv submission/* submissions/$STUDENT/
-          git config --global user.email "github-actions@github.com"
-          git config --global user.name "GitHub Actions"
-          git add submissions/$STUDENT
-          git commit -m "Store submission from $STUDENT"
-
-      - name: Push submission branch
-        run: |
-          STUDENT=$(echo ${{ github.event.pull_request.user.login }})
-          BRANCH_NAME="submission-${STUDENT}"
-          git push origin $BRANCH_NAME
+  
