@@ -2,19 +2,21 @@
 
 function generatePassword(length, options) {
   const chars = {
-  
-  }
-  
-  let availableChars = '';
- 
-  
-  let password = '';
+    
+  };
+
+  let availableChars = "";
+  if (options.lower) 
+  if (options.upper) 
+  if (options.number) 
+  if (options.symbol);
+
+  let password = "";
   for (let i = 0; i < length; i++) {
     
   }
-  
-  
 
+  return password;
 }
 
 module.exports = generatePassword;
