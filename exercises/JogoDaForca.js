@@ -2,7 +2,7 @@
 
 class Hangman {
   constructor(word, maxAttempts) {
-   
+    
   }
 
   guess(letter) {
@@ -10,11 +10,11 @@ class Hangman {
   }
 
   getWordProgress() {
-   
+    
   }
 
   isGameOver() {
-    
+   
   }
 }
 
