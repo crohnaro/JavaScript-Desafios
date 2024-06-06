@@ -11,7 +11,7 @@ class Hangman {
     letter = letter.toLowerCase();
 
     if (this.isGameOver()) {
-      return 'The game is over.';
+      return 'Game Over';
     }
 
     if (this.guessedLetters.includes(letter)) {

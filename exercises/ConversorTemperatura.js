@@ -10,13 +10,13 @@ function convertTemperature() {
         result = temperature;
     } else {
         switch (fromUnit) {
-            case 'celsius':
+            case 'C':
                 result = convertFromCelsius(temperature, toUnit);
                 break;
-            case 'fahrenheit':
+            case 'F':
                 result = convertFromFahrenheit(temperature, toUnit);
                 break;
-            case 'kelvin':
+            case 'K':
                 result = convertFromKelvin(temperature, toUnit);
                 break;
         }
@@ -27,27 +27,27 @@ function convertTemperature() {
 
 function convertFromCelsius(value, toUnit) {
     switch (toUnit) {
-        case 'fahrenheit':
+        case 'F':
             return value * 9/5 + 32;
-        case 'kelvin':
+        case 'K':
             return value + 273.15;
     }
 }
 
 function convertFromFahrenheit(value, toUnit) {
     switch (toUnit) {
-        case 'celsius':
+        case 'C':
             return (value - 32) * 5/9;
-        case 'kelvin':
+        case 'K':
             return (value - 32) * 5/9 + 273.15;
     }
 }
 
 function convertFromKelvin(value, toUnit) {
     switch (toUnit) {
-        case 'celsius':
+        case 'C':
             return value - 273.15;
-        case 'fahrenheit':
+        case 'F':
             return (value - 273.15) * 9/5 + 32;
     }
 }
