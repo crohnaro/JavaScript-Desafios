@@ -2,13 +2,18 @@
 
 function generatePassword(length, options) {
   const chars = {
+    
+  };
+
+  let availableChars = "";
   
-  }
   
-  let availableChars = '';
- 
+  if (!availableChars) {
   
-  let password = '';
+} 
+
+
+  let password = "";
   for (let i = 0; i < length; i++) {
     
   }
